@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { useSampleDispatch, useSampleState } from './SampleContext';
 
 type Color = 'red' | 'orange' | 'yellow' 
 type State = {
@@ -40,17 +41,21 @@ function reducer(state:State, action:Action){
 }
 
 const ReducerSample = () => {
-    const [state, dispatch] = useReducer(reducer, {
-        count:0,
-        text:'hello',
-        color: 'red',
-        isGood: true,
-    });
+    // const [state, dispatch] = useReducer(reducer, {
+    //     count:0,
+    //     text:'hello',
+    //     color: 'red',
+    //     isGood: true,
+    // });
+
+    // 만든 훅으로 쉽게 조회하여 사용
+    const state = useSampleState();
+    const dispatch = useSampleDispatch();
 
     const setCount = () => dispatch({type:'SET_COUNT', count: 5}); // count 를 넣지 않으면 에러발생
     const setText = () => dispatch({ type: 'SET_TEXT', text: 'bye' }); // text 를 넣지 않으면 에러 발생
-    const setColor = () => dispatch({ type: 'SET_COLOR', color: 'orange' }); // orange 를 넣지 않으면 에러 발생
-    const toggleGood = () => dispatch({ type: 'TOGGLE_GOOD' });
+    const setColor = () => dispatch({ type: 'SET_COLOR', color: 'green' }); // orange 를 넣지 않으면 에러 발생
+    const toggleGood = () => dispatch({ type: 'TOOGLE_GOOD' });
 
     return (
         <div>
