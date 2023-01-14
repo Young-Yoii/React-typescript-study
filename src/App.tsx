@@ -2,10 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Greeting from './Greetings';
-import Counter from './Counter';
+import Counter from './components/Counter';
 import MyForm from './MyForm';
 import ReducerSample from './ReducerSample';
 import { SampleProvider } from './SampleContext';
+import CounterContainer from './container/CounterContainer';
 
 function App() {
   const onClick = (name: string) => {
@@ -17,7 +18,7 @@ function App() {
   return (
     <>
      <Greeting name="Hello" onClick={onClick} />
-      <Counter />
+      <CounterContainer />
       <MyForm onSubmit={onSubmit}/>
       <SampleProvider>
         <ReducerSample />
